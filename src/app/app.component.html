@@ -1,0 +1,16 @@
+<app-header (contentSelected)="onSwitch($event)"></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <app-form 
+      *ngIf="loadedContent === 'register'" 
+      (submitHandler)="onRegister($event)" 
+      [updateInfo]="updateInfo"
+      [users]="users"></app-form>
+      <app-users 
+      *ngIf="loadedContent === 'users'" 
+      [users]="users" 
+      (updateHandler)="onUpdate($event)"></app-users>
+    </div>
+  </div>
+</div>

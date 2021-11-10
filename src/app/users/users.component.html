@@ -1,0 +1,29 @@
+<table *ngIf="users.length > 0; else noData" class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Password</th>
+            <th scope="col">Confirm Password</th>
+            <th scope="col">Nickname</th>
+            <th scope="col">Phone</th>
+            <th scope="col" colspan="2">Website</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users; index as id">
+            <th scope="row">{{ id + 1 }}</th>
+            <td>{{ user.email }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.confirmPassword }}</td>
+            <td>{{ user.nickname }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.website }}</td>
+            <td><a href="#" (click)="onUpdate(id)">Update</a></td>
+            <td><a href="#" (click)="onDelete(id)">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #noData>
+    <h1 class="text-center">No Data.</h1>
+</ng-template>

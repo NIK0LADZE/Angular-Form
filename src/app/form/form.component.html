@@ -1,0 +1,80 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row py-3">
+        <label for="email" class="col-4 col-form-label text-end"><span class="required">*</span> E-mail:</label>
+        <div class="col-5 p-0">
+            <input class="form-control" type="email" name="email" id="email" formControlName="email">
+        </div>
+        <div *ngIf="!form.controls['email'].valid && form.controls['email'].touched"
+            class="invalid-message col-8 ms-auto px-0 pt-1">
+            Please enter a valid E-mail address.
+        </div>
+    </div>
+    <div class="row py-3">
+        <label for="password" class="col-4 col-form-label text-end"><span class="required">*</span> Password:</label>
+        <div class="col-5 p-0">
+            <input class="form-control" type="password" name="password" id="password" formControlName="password">
+        </div>
+        <div *ngIf="!form.controls['password'].valid && form.controls['password'].touched"
+            class="invalid-message col-8 ms-auto px-0 pt-1">
+            Password should contain at least 8 characters(only English and digits)
+        </div>
+    </div>
+    <div class="row py-3">
+        <label for="confirmPassword" class="col-4 col-form-label text-end"><span class="required">*</span> Confirm
+            Password:</label>
+        <div class="col-5 p-0">
+            <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"
+                formControlName="confirmPassword">
+        </div>
+        <div *ngIf="!form.controls['confirmPassword'].valid && form.controls['confirmPassword'].touched"
+            class="invalid-message col-8 ms-auto px-0 pt-1">
+            Passwords should match.
+        </div>
+    </div>
+    <div class="row py-3">
+        <label for="nickname" class="col-4 col-form-label text-end"><span class="required">*</span> Nickname:</label>
+        <div class="col-5 p-0">
+            <input type="text" name="nickname" id="nickname" class="form-control" formControlName="nickname">
+        </div>
+        <div *ngIf="!form.controls['nickname'].valid && form.controls['nickname'].touched"
+            class="invalid-message col-8 ms-auto px-0 pt-1">
+            Nickname should contain only Englis characters, digits and "-".
+        </div>
+    </div>
+    <div class="row py-3">
+        <label for="phone" class="col-4 col-form-label text-end"><span class="required">*</span> Phone Number:</label>
+        <div class="col-5 p-0">
+            <input type="text" name="phone" id="phone" class="form-control" formControlName="phone">
+        </div>
+        <div *ngIf="!form.controls['phone'].valid && form.controls['phone'].touched"
+            class="invalid-message col-8 ms-auto px-0 pt-1">
+            Please enter a valid phone number.
+        </div>
+    </div>
+    <div class="row py-3">
+        <label for="website" class="col-4 col-form-label text-end"><span class="required">*</span> Website:</label>
+        <div class="col-5 p-0">
+            <input type="text" name="website" id="website" placeholder="website" class="form-control"
+                formControlName="website">
+        </div>
+        <div *ngIf="!form.controls['website'].valid && form.controls['website'].touched"
+            class="invalid-message col-8 ms-auto px-0 pt-1">
+            Please enter a valid url.
+        </div>
+    </div>
+    <div class="row py-3">
+        <div class="col-8 ms-auto form-check">
+            <input [attr.disabled]="updateInfo.comingFromUpdate ? true : null" class="form-check-input" type="checkbox" name="agreement" id="agreement" formControlName="agreement">
+            <label class="form-check-label" for="agreement">I have read the <span>agreement</span></label>
+        </div>
+        <div *ngIf="!form.controls['agreement'].valid && form.controls['agreement'].touched"
+            class="invalid-message col-8 ms-auto px-0">
+            You must agree the terms and conditions.
+        </div>
+    </div>
+    <div class="row py-3">
+        <div class="col-8 p-0 ms-auto">
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Register</button>
+        </div>
+    </div>
+</form>
